@@ -12,6 +12,7 @@ public class TestNode {
     @Before
     public void setUp(){
         tree = new Tree("root");
+        tree.depth=0;
     }
 
     @After
