@@ -6,7 +6,7 @@ import org.junit.Test;
 import system.Tree;
 
 import static org.junit.Assert.*;
-public class TestTree {
+public class TreeTest {
 
     Tree root;
     @Before

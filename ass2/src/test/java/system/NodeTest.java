@@ -8,14 +8,13 @@ import system.Tree;
 
 import static org.junit.Assert.*;
 
-public class TestNode {
+public class NodeTest {
     final int size = 10;
     Node tree;
 
     @Before
     public void setUp(){
         tree = new Tree("root");
-        tree.depth=0;
     }
 
     @After
@@ -28,6 +27,7 @@ public class TestNode {
     public void testGetPathRoot(){
         assertEquals(tree.getPath().length,0);
         assertEquals(tree.parent,null);
+        assertEquals(tree.depth,0);
     }
 
     @Test

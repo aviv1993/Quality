@@ -5,9 +5,11 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestNode.class,
-        TestSpace.class,
-        TestTree.class
+        NodeTest.class,
+        SpaceTest.class,
+        TreeTest.class,
+        LeafTest.class,
+        FileSystemTest.class
 })
 
 public class TestSuite {

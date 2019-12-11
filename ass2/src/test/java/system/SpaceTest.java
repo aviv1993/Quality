@@ -11,7 +11,7 @@ import system.Tree;
 
 import static org.junit.Assert.*;
 
-public class TestSpace {
+public class SpaceTest {
     final int size = 10;
     FileSystem fs;
 
@@ -25,6 +25,10 @@ public class TestSpace {
     }
 
 
+    @Test
+    public void testSpaceSize(){
+        assertEquals(FileSystem.fileStorage.countFreeSpace(),size);
+    }
     //Testing allocating space and the effect on leaf and Space classes
     @Test
     public void testAlloc1() {
@@ -44,26 +48,17 @@ public class TestSpace {
             for(int i=0;i<leafSize;i++)
                 assertEquals(blocks[i],leaf1);
         }
-        catch (Exception e) { assertTrue(false);}
+        catch (Exception e) { fail();}
 
     }
 
 
     //Allocating more space than needed :
-    @Test
-    public void testAlloc2(){
+    @Test (expected = NullPointerException.class)
+    public void testAlloc2() throws Exception{
         int leafSize=11;
-        try {
-            Leaf leaf2 = new Leaf("Bibi",leafSize) ; //allocating more space than allowed
-            assertTrue(false);
-
-        }
-        catch (NullPointerException e){
-            assertTrue(true); //Means we allocated too much space
-        }
-        catch (OutOfSpaceException e){
-            assertTrue(false);
-        }
+        Leaf leaf2 = new Leaf("Bibi",leafSize) ; //allocating more space than allowed
+        assertTrue(false);
     }
 
 
@@ -90,8 +85,7 @@ public class TestSpace {
             assertFalse(parent.children.containsKey(leaf.name));
         }
         catch (Exception e){
-            e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
     }
 
